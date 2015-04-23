@@ -15,12 +15,29 @@ namespace WindowsFormsApplication1
         public Add()
         {
             InitializeComponent();
+            numericUpDown1.Value = DateTime.Now.Hour;
+            numericUpDown2.Value = DateTime.Now.Minute+1;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Core.events.Add(new Event(textBox1.Text,richTextBox1.Text,new DateTime(dateTimePicker1.Value.Year,dateTimePicker1.Value.Month,dateTimePicker1.Value.Day,Convert.ToInt32(numericUpDown1.Value),Convert.ToInt32(numericUpDown2.Value),0)));
+            Event q = new Event(
+                textBox1.Text,
+                richTextBox1.Text,
+                new DateTime(
+                    dateTimePicker1.Value.Year,
+                    dateTimePicker1.Value.Month,
+                    dateTimePicker1.Value.Day,
+                Convert.ToInt32(numericUpDown1.Value),
+                Convert.ToInt32(numericUpDown2.Value), 0));
+            Core.events.Add(q);
+            q.Happen += new Event.EventHappensHandler(q_Happen);
             this.Close();
+        }
+
+        void q_Happen(object sender, object msg)
+        {
+            MessageBox.Show((String)msg);
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -44,6 +61,11 @@ namespace WindowsFormsApplication1
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Add_Load(object sender, EventArgs e)
         {
 
         }

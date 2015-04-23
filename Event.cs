@@ -14,13 +14,16 @@ namespace WindowsFormsApplication1
     {
         private Timer timer;
 
-        public delegate bool Handler_Checker(DateTime x);
-        public event Handler_Checker Checker;
-        public delegate void Handler_Happend();
-        public event Handler_Happend Happened;
+
         public DateTime time;
         public string name, text;
         public bool happend;
+
+        /*********************************************************/
+        public delegate void EventHappensHandler(object sender, object msg);
+        public event EventHappensHandler Happen;
+        public bool signaled = false;
+        /*********************************************************/
         public Event(string name, string text, DateTime time)
         {
             this.name = name;
@@ -30,17 +33,19 @@ namespace WindowsFormsApplication1
             this.timer.Interval = 100;
             timer.Start();
             timer.Tick += timer_Tick;
-            this.Checker += (DateTime x) => { return false; };
-            this.Happened += () => { };
             this.happend = false;
         }
 
         void timer_Tick(object sender, EventArgs e)
         {
-            if(Checker(this.time))
+            /*********************************************************/
+            if (DateTime.Now.CompareTo(time)>0 && !signaled)
             {
-                Happened();
+                signaled = true;
+                ((Timer)sender).Stop();
+                Happen(this, "Событие " +name+ " наступило");
             }
+            /*********************************************************/
         }
     }
 }
