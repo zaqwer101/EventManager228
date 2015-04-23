@@ -16,7 +16,7 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
             numericUpDown1.Value = DateTime.Now.Hour;
-            numericUpDown2.Value = DateTime.Now.Minute+1;
+            numericUpDown2.Value = DateTime.Now.Minute;
         }
 
         private void button1_Click(object sender, EventArgs e)
