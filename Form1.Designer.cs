@@ -35,6 +35,8 @@
             this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.изменитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.дополнительноToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.прошедшиеСобытияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,7 +53,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.событиеToolStripMenuItem});
+            this.событиеToolStripMenuItem,
+            this.дополнительноToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(284, 24);
@@ -100,6 +103,22 @@
             this.richTextBox1.Text = "";
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
+            // дополнительноToolStripMenuItem
+            // 
+            this.дополнительноToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.прошедшиеСобытияToolStripMenuItem});
+            this.дополнительноToolStripMenuItem.Name = "дополнительноToolStripMenuItem";
+            this.дополнительноToolStripMenuItem.Size = new System.Drawing.Size(107, 20);
+            this.дополнительноToolStripMenuItem.Text = "Дополнительно";
+            this.дополнительноToolStripMenuItem.Click += new System.EventHandler(this.дополнительноToolStripMenuItem_Click);
+            // 
+            // прошедшиеСобытияToolStripMenuItem
+            // 
+            this.прошедшиеСобытияToolStripMenuItem.Name = "прошедшиеСобытияToolStripMenuItem";
+            this.прошедшиеСобытияToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.прошедшиеСобытияToolStripMenuItem.Text = "Прошедшие события";
+            this.прошедшиеСобытияToolStripMenuItem.Click += new System.EventHandler(this.прошедшиеСобытияToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -128,6 +147,8 @@
         private System.Windows.Forms.ToolStripMenuItem удалитьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem изменитьToolStripMenuItem;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.ToolStripMenuItem дополнительноToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem прошедшиеСобытияToolStripMenuItem;
     }
 }
 

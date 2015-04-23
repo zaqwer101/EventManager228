@@ -17,7 +17,6 @@ namespace WindowsFormsApplication1
 
         public DateTime time;
         public string name, text;
-        public bool happend;
 
         /*********************************************************/
         public delegate void EventHappensHandler(object sender, object msg);
@@ -33,7 +32,6 @@ namespace WindowsFormsApplication1
             this.timer.Interval = 100;
             timer.Start();
             timer.Tick += timer_Tick;
-            this.happend = false;
         }
 
         void timer_Tick(object sender, EventArgs e)

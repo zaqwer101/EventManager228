@@ -12,16 +12,7 @@ namespace WindowsFormsApplication1
 {
     public partial class Form1 : Form
     {
-        //Синхронизировать листбокс со списком событий
-        void SyncList()
-        {
-            this.listBox1.Items.Clear();
-            
-            for(int i=0;i<Core.events.Count;i++)
-            {
-                this.listBox1.Items.Add(Core.events[i].name);
-            }
-        }
+
 
         public Form1()
         {
@@ -49,7 +40,7 @@ namespace WindowsFormsApplication1
             Add add = new Add();
             add.ShowDialog();
             Core.Update_list();
-            SyncList();
+            Core.SyncList(this.listBox1);
         }
 
 
@@ -70,6 +61,16 @@ namespace WindowsFormsApplication1
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void прошедшиеСобытияToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void дополнительноToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }

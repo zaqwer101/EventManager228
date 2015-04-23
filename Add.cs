@@ -38,6 +38,7 @@ namespace WindowsFormsApplication1
         void q_Happen(object sender, object msg)
         {
             MessageBox.Show((String)msg);
+            Core.Update_list();
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
