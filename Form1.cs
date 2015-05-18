@@ -12,17 +12,23 @@ namespace WindowsFormsApplication1
 {
     public partial class Form1 : Form
     {
-
+        public void UpdateList()
+        {
+            this.listBox1.Items.Clear();
+            this.listBox1.Items.AddRange(Core.events.ToArray());
+        }
 
         public Form1()
         {
             InitializeComponent();
             
+            
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            Core.DeSerial();
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -30,7 +36,7 @@ namespace WindowsFormsApplication1
 
             try
             {
-                this.richTextBox1.Text = Core.events[listBox1.SelectedIndex].name + "\n" + Core.events[listBox1.SelectedIndex].time.ToString() + "\n-----------------\n" + Core.events[listBox1.SelectedIndex].text;
+                this.richTextBox1.Text = Core.events[listBox1.SelectedIndex].event_.name + "\n" + Core.events[listBox1.SelectedIndex].event_.time.ToString() + "\n-----------------\n" + Core.events[listBox1.SelectedIndex].event_.text;
             }
             catch { }
         }
@@ -49,6 +55,8 @@ namespace WindowsFormsApplication1
         {
 
         }
+
+        
 
         private void изменитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -71,6 +79,16 @@ namespace WindowsFormsApplication1
         }
 
         private void дополнительноToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Core.Serial();
+        }
+
+        private void Form1_Leave(object sender, EventArgs e)
         {
 
         }

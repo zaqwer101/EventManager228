@@ -10,38 +10,43 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
+    //Логика событий
     public class Event
     {
-        private Timer timer;
+        public Timer timer;
+        public Event_ event_;
 
 
-        public DateTime time;
-        public string name, text;
 
         /*********************************************************/
         public delegate void EventHappensHandler(object sender, object msg);
         public event EventHappensHandler Happen;
-        public bool signaled = false;
         /*********************************************************/
-        public Event(string name, string text, DateTime time)
+        public Event(Event_ event_)
         {
-            this.name = name;
-            this.text = text;
-            this.time = time;
+            this.event_ = event_;
             this.timer = new Timer();
             this.timer.Interval = 100;
             timer.Start();
             timer.Tick += timer_Tick;
+            this.Happen += new Event.EventHappensHandler(q_Happen);
+        }
+
+        private void q_Happen(object sender, object msg)
+        {
+            Core.Update_list();
+            Core.SyncList(Core.form1.listBox1);
+            MessageBox.Show((String)msg);
         }
 
         void timer_Tick(object sender, EventArgs e)
         {
             /*********************************************************/
-            if (DateTime.Now.CompareTo(time)>0 && !signaled)
+            if (DateTime.Now.CompareTo(this.event_.time) > 0 && !this.event_.signaled)
             {
-                signaled = true;
+                this.event_.signaled = true;
                 ((Timer)sender).Stop();
-                Happen(this, "Событие " +name+ " наступило");
+                this.Happen(this, "Событие " + this.event_.name + " наступило");
             }
             /*********************************************************/
         }

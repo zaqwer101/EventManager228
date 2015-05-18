@@ -21,7 +21,7 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Event q = new Event(
+            Event_ q = new Event_(
                 textBox1.Text,
                 richTextBox1.Text,
                 new DateTime(
@@ -30,16 +30,12 @@ namespace WindowsFormsApplication1
                     dateTimePicker1.Value.Day,
                 Convert.ToInt32(numericUpDown1.Value),
                 Convert.ToInt32(numericUpDown2.Value), 0));
-            Core.events.Add(q);
-            q.Happen += new Event.EventHappensHandler(q_Happen);
+            Event qq = new Event(q);
+            Core.events.Add(qq);
             this.Close();
         }
 
-        void q_Happen(object sender, object msg)
-        {
-            MessageBox.Show((String)msg);
-            Core.Update_list();
-        }
+
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
